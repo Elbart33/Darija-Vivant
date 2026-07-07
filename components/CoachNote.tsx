@@ -45,7 +45,7 @@ export default function CoachNote({
                   }`}
                 >
                   <span className="text-base font-semibold text-ink dark:text-sand">
-                    Voir l'explication en français
+                    Explication en français
                   </span>
                   <span className="text-xl">🇫🇷</span>
                 </button>
