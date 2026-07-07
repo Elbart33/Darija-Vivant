@@ -70,5 +70,14 @@
     "registre": "naturel",
     "explanationFr": "« شحال دايرة » (Shḥal dayra) أو « بشحال » (Bshḥal) هي الصيغة الأكثر طبيعية للسؤال عن الثمن.",
     "explanationDarija": "« شحال دايرة » ولا « بشحال » هي الطريقة العادية اللي كيسولو بيها على الثمن."
+  },
+  {
+    "id": "nbasi-hlag",
+    "pattern": "\\bnmchi (3and|l) l?hlag\\b",
+    "flags": "gi",
+    "natural": "نمشي نباسي عند الحلاق",
+    "registre": "naturel",
+    "explanationFr": "L'expression « نمشي نباسي عند الحلاق » (nmchi nbasi 3and l-hlag) est plus naturelle et courante pour dire « aller chez le coiffeur/barbier ».",
+    "explanationDarija": "فالتحسين رجعنا الجملة طبيعية كثر باستعمال فعل **«passer»** اللي كيجي حسن فالهضرة اليومية فاش كتكون غادي عند الحلاق."
   }
 ]
