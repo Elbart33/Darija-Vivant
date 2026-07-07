@@ -40,7 +40,7 @@ export function useAnalysis() {
                 after: ai.corrected,
                 explanationFr:
                   ai.correctionExplanationFr || "Une petite correction a été apportée.",
-                explanationDarija: ai.correctionExplanationDarija,
+                explanationDarija: ai.correctionExplanationDarija || "تم إجراء تصحيح بسيط.",
                 stage: "correction",
               },
             ]
@@ -54,7 +54,7 @@ export function useAnalysis() {
                 explanationFr:
                   ai.improvementExplanationFr ||
                   "Reformulation proposée pour sonner plus naturel.",
-                explanationDarija: ai.improvementExplanationDarija,
+                explanationDarija: ai.improvementExplanationDarija || "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية.",
                 stage: "amelioration",
               },
             ]
