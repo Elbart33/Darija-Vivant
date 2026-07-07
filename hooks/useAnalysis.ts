@@ -50,25 +50,35 @@ export function useAnalysis() {
               },
             ]
           : [];
-        improvementNotes = ai.improvementChanged
-          ? [
-              {
-                ruleId: `ai-improvement-${ai.provider}`,
-                before: ai.corrected,
-                after: ai.improved,
-                explanationFr:
-                  ai.provider === "gemini"
-                    ? ""
-                    : ai.improvementExplanationFr ||
-                      "Reformulation proposée pour sonner plus naturel.",
-                explanationDarija:
-                  ai.provider === "gemini"
-                    ? ai.improvementExplanationDarija || "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية."
-                    : ai.improvementExplanationDarija || "",
-                stage: "amelioration",
-              },
-            ]
-          : [];
+        let improvementExplanationFr = "";
+        let improvementExplanationDarija = "";
+
+        const defaultImprovementExplanationFr = "Reformulation proposée pour sonner plus naturel.";
+        const defaultImprovementExplanationDarijaGemini = "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية.";
+
+        if (ai.improvementChanged) {
+          if (ai.provider === "gemini") {
+            // Pour Gemini, l'explication française est vide par design.
+            improvementExplanationFr = "";
+            improvementExplanationDarija = ai.improvementExplanationDarija || defaultImprovementExplanationDarijaGemini;
+          } else {
+            // Pour les autres fournisseurs, utiliser l'explication fournie ou la valeur par défaut française.
+            improvementExplanationFr = ai.improvementExplanationFr || defaultImprovementExplanationFr;
+            // L'explication darija n'est pas attendue des autres fournisseurs, donc elle est vide ou celle fournie par AI.
+            improvementExplanationDarija = ai.improvementExplanationDarija || "";
+          }
+
+          improvementNotes = [{
+            ruleId: `ai-improvement-${ai.provider}`,
+            before: ai.corrected,
+            after: ai.improved,
+            explanationFr: improvementExplanationFr,
+            explanationDarija: improvementExplanationDarija,
+            stage: "amelioration",
+          }];
+        } else {
+          improvementNotes = [];
+        }
         correctionDiff = wordDiff(rawSentence, corrected, "corrected");
         improvementDiff = wordDiff(corrected, improved, "improved");
       }
