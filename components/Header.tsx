@@ -23,7 +23,7 @@ export default function Header() {
             </svg>
           </span>
           <span className="font-display text-lg font-semibold tracking-tight text-ink dark:text-sand">
-            Français Vivant
+            Arabe Vivant
           </span>
         </Link>
         <nav className="flex items-center gap-1 text-sm">

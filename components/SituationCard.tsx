@@ -30,6 +30,8 @@ export default function SituationCard({
             <Icon name={situation.icon} />
           </span>
           <h3
+            dir="rtl"
+            lang="ar"
             className={`font-display text-xl font-semibold ${
               featured ? "text-sand" : "text-ink dark:text-sand"
             }`}
@@ -37,6 +39,8 @@ export default function SituationCard({
             {situation.title}
           </h3>
           <p
+            dir="rtl"
+            lang="ar"
             className={`mt-1.5 text-sm leading-relaxed ${
               featured ? "text-sand/80" : "text-ink/60 dark:text-sand/60"
             }`}

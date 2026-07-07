@@ -10,7 +10,7 @@ const styles: Record<DiffSegment["kind"], string> = {
 
 export default function DiffView({ segments }: { segments: DiffSegment[] }) {
   return (
-    <p className="text-lg leading-relaxed text-ink dark:text-sand">
+    <p className="text-lg leading-relaxed text-ink dark:text-sand" dir="auto">
       {segments.map((seg, i) => (
         <span
           key={i}

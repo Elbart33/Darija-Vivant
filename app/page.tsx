@@ -40,7 +40,7 @@ export default function HomePage() {
           <span className="italic text-zellige dark:text-saffron">
             {today.title.toLowerCase()}
           </span>
-          .
+          . Apprenez à lire et écrire l'arabe en vous appuyant sur votre darija.
         </h1>
       </section>
 

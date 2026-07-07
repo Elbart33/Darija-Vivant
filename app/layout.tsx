@@ -18,9 +18,9 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Darija Vivant — parlez une darija qui vous ressemble",
+  title: "Arabe Vivant — parlez un arabe qui vous ressemble",
   description:
-    "Une pratique quotidienne pour transformer un français fonctionnel en français naturel, à partir de situations de vie réelles.",
+    "Une pratique quotidienne pour transformer votre Darija orale en arabe écrit et parlé plus formel, à partir de situations de vie réelles. Pour locuteurs francophones maîtrisant la darija orale (niveau A2-B1).",
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon-32.png",
@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Darija Vivant",
+    title: "Arabe Vivant",
   },
 };
 
 export const viewport = {
-  themeColor: "#8B0000",
+  themeColor: "#E0B460", // Un or doux, tiré de la palette existante
 };
 
 export default function RootLayout({

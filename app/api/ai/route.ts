@@ -165,18 +165,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, reason: "no_content" });
     }
 
-    let correctionExplanationFr = "";
-    let correctionExplanationDarija = "";
-    let improvementExplanationFr = "";
-    let improvementExplanationDarija = "";
-
-    if (usedProvider === "gemini") {
-      correctionExplanationDarija = parsed.correctionExplanationDarija || "";
-      improvementExplanationDarija = parsed.improvementExplanationDarija || "";
-    } else {
-      correctionExplanationFr = parsed.correctionExplanationFr || "";
-      improvementExplanationFr = parsed.improvementExplanationFr || "";
-    }
+    const correctionExplanationFr = parsed.correctionExplanationFr || "";
+    const correctionExplanationDarija = parsed.correctionExplanationDarija || "";
+    const improvementExplanationFr = parsed.improvementExplanationFr || "";
+    const improvementExplanationDarija = parsed.improvementExplanationDarija || "";
 
     return NextResponse.json({
       ok: true,

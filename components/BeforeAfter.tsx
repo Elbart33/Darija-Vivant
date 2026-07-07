@@ -12,7 +12,7 @@ export default function BeforeAfter({ result }: { result: AnalysisResult }) {
         <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-ink/40 dark:text-sand/40">
           Votre point de départ
         </p>
-        <p className="text-lg leading-relaxed text-ink/60 dark:text-sand/60">
+        <p className="text-lg leading-relaxed text-ink/60 dark:text-sand/60" dir="auto">
           {result.original}
         </p>
       </div>
@@ -71,11 +71,11 @@ export default function BeforeAfter({ result }: { result: AnalysisResult }) {
           <ul className="space-y-3">
             {result.matchedIdioms.map((idiom) => (
               <li key={idiom.id}>
-                <p className="font-display text-lg font-semibold text-ink dark:text-sand">
+                <p className="font-display text-lg font-semibold text-ink dark:text-sand" dir="rtl" lang="ar">
                   {idiom.expression}
                 </p>
                 <p className="text-base text-ink/70 dark:text-sand/70">{idiom.meaningFr}</p>
-                <p className="text-base italic text-ink/50 dark:text-sand/50">« {idiom.example} »</p>
+                <p className="text-base italic text-ink/50 dark:text-sand/50" dir="rtl" lang="ar">« {idiom.example} »</p>
               </li>
             ))}
           </ul>

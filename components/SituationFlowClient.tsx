@@ -100,14 +100,14 @@ export default function SituationFlowClient({ id }: { id: string }) {
         <span className="grid h-10 w-10 place-items-center rounded-xl bg-saffron/15 text-saffronDeep dark:bg-saffron/10 dark:text-saffron">
           <Icon name={situation.icon} />
         </span>
-        <h1 className="font-display text-2xl font-semibold text-ink dark:text-sand">
+        <h1 dir="rtl" lang="ar" className="font-display text-2xl font-semibold text-ink dark:text-sand">
           {situation.title}
         </h1>
       </div>
 
       {step === "context" && (
         <div className="animate-fadeUp space-y-5 rounded-2xl border border-ink/10 bg-white/60 p-6 dark:border-sand/10 dark:bg-ink/40">
-          <p className="text-ink/80 leading-relaxed dark:text-sand/80">{situation.context}</p>
+          <p dir="rtl" lang="ar" className="text-ink/80 leading-relaxed dark:text-sand/80">{situation.context}</p>
           <button
             onClick={() => setStep("comprehension")}
             className="rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02]"
@@ -119,7 +119,11 @@ export default function SituationFlowClient({ id }: { id: string }) {
 
       {step === "comprehension" && (
         <div className="animate-fadeUp space-y-5 rounded-2xl border border-ink/10 bg-white/60 p-6 dark:border-sand/10 dark:bg-ink/40">
-          <p className="rounded-xl bg-mist p-4 italic text-ink/80 dark:bg-ink/60 dark:text-sand/80">
+          <p
+            dir="rtl"
+            lang="ar"
+            className="rounded-xl bg-mist p-4 italic text-ink/80 dark:bg-ink/60 dark:text-sand/80"
+          >
             {situation.comprehension.prompt}
           </p>
           <p className="font-medium text-ink dark:text-sand">{situation.comprehension.question}</p>
@@ -132,7 +136,9 @@ export default function SituationFlowClient({ id }: { id: string }) {
                   key={i}
                   onClick={() => handleOptionSelect(i)}
                   disabled={showAnswer}
-                  className={`w-full rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
+                  dir="rtl" // Set direction to Right-To-Left for Arabic options
+                  lang="ar" // Indicate Arabic language
+                  className={`w-full rounded-xl border px-4 py-3 text-right text-sm transition-colors ${ // Changed text-left to text-right for RTL
                     showAnswer && isCorrect
                       ? "animate-correctPulse border-zellige bg-zellige/10 text-zellige2 font-semibold dark:border-zellige dark:bg-zellige/20 dark:text-sand"
                       : showAnswer && isSelected && !isCorrect
@@ -164,7 +170,9 @@ export default function SituationFlowClient({ id }: { id: string }) {
             value={userSentence}
             onChange={(e) => setUserSentence(e.target.value)}
             rows={4}
-            placeholder="Écrivez votre réponse ici, comme vous la diriez à l'oral..."
+            placeholder="اكتب إجابتك هنا، كما ستقولها شفهيا..." // "Write your answer here, as you would say it orally..."
+            dir="rtl" // Set direction to Right-To-Left for Arabic input
+            lang="ar" // Indicate Arabic language
             style={{ colorScheme: "light" }}
             className="w-full rounded-xl border border-ink/15 bg-white p-4 text-ink placeholder:text-ink/30 transition-colors duration-200 focus:border-zellige dark:border-sand/15 dark:bg-ink/60 dark:text-sand dark:placeholder:text-sand/30 dark:focus:border-saffron"
           />
