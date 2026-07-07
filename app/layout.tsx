@@ -18,7 +18,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Français Vivant — parlez un français qui vous ressemble",
+  title: "Darija Vivant — parlez une darija qui vous ressemble",
   description:
     "Une pratique quotidienne pour transformer un français fonctionnel en français naturel, à partir de situations de vie réelles.",
   manifest: "/manifest.json",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Français Vivant",
+    title: "Darija Vivant",
   },
 };
 

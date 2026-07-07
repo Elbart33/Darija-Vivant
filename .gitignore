@@ -1,3 +1,12 @@
 node_modules/
 .env*
 .next/
+venv/
+env/
+__pycache__/
+*.pyc
+repo_source/
+.DS_Store
+agent.py
+agent.pycat
+26.1.2
