@@ -1,0 +1,74 @@
+[
+  {
+    "id": "bghit-na3ref-wach",
+    "pattern": "\\bbghit na3ref wach\\b",
+    "flags": "gi",
+    "natural": "بغيت نسول واش",
+    "registre": "poli",
+    "explanationFr": "« بغيت نسول واش » (bghit nsowwel wach) أكثر تهذيبًا من « بغيت نعرف واش » (bghit na3ref wach)، خاصة في المواقف الرسمية.",
+    "explanationDarija": "« بغيت نسول واش » أحسن و أكثر أدب من « بغيت نعرف واش »، خصوصا في التليفون ولا في الإدارة."
+  },
+  {
+    "id": "ana-farhan-bzaf",
+    "pattern": "\\bana farhan\\b",
+    "flags": "gi",
+    "natural": "أنا فرحان بزاف",
+    "registre": "chaleureux",
+    "explanationFr": "« أنا فرحان بزاف » (ana farhan bzaf) أو « أنا فرحان بـ... » (ana farhan b...) يعطي معنى أكثر حماسة من مجرد « أنا فرحان ».",
+    "explanationDarija": "« فرحان بزاف » كايعطي معنى أكثر حماس من « أنا فرحان » بوحدها."
+  },
+  {
+    "id": "3tini",
+    "pattern": "\\b3tini\\b",
+    "flags": "gi",
+    "natural": "واش ممكن تعطيني",
+    "registre": "poli",
+    "explanationFr": "السؤال بـ « واش ممكن تعطيني » (Wach mumkin ta3tini) أكثر لطفًا من الأمر المباشر « عطيني ».",
+    "explanationDarija": "السؤال بـ « واش ممكن تعطيني » ألطف من الأمر المباشر « عطيني »."
+  },
+  {
+    "id": "kayen-chi-mochkil",
+    "pattern": "\\bkayen chi mochkil m3a\\b",
+    "flags": "gi",
+    "natural": "عندي شي مشكل مع",
+    "registre": "naturel",
+    "explanationFr": "« عندي شي مشكل مع » (3andi shi mochkil m3a) تعبير أكثر طبيعية واستعمالا في الحديث اليومي.",
+    "explanationDarija": "« عندي شي مشكل مع » تعبير عادي وكايستعملوه بزاف في الهضرة اليومية."
+  },
+  {
+    "id": "bghit-maw'id",
+    "pattern": "\\bbghit maw'id\\b",
+    "flags": "gi",
+    "natural": "بغيت ناخد موعد",
+    "registre": "poli",
+    "explanationFr": "« بغيت ناخد موعد » (Bghit nakhed maw'id) هي الصيغة القياسية في الهاتف.",
+    "explanationDarija": "هادي هي الجملة العادية اللي كيستعملوها في التليفون باش تاخد موعد."
+  },
+  {
+    "id": "ma-khdamch-correction",
+    "pattern": "\\bma khdamch\\b",
+    "flags": "gi",
+    "natural": "ما كايخدمش / عطلان",
+    "registre": "soigné",
+    "explanationFr": "في الكتابة أو في المواقف الرسمية، « ما كايخدمش » (Ma kayakhdamch) أو « عطلان » (3atlan) أكثر رسمية.",
+    "explanationDarija": "ف الكتابة ولا في المواقف الرسمية، « ما كايخدمش » ولا « عطلان » أحسن."
+  },
+  {
+    "id": "kanqelleb-nshri",
+    "pattern": "\\bkanqelleb nshri\\b",
+    "flags": "gi",
+    "natural": "كنقلب باش نشري",
+    "registre": "naturel",
+    "explanationFr": "« كنقلب باش نشري » (Kanqelleb bach nshri) يبدو أكثر طبيعية من التعبير عن رغبة مباشرة في الشراء.",
+    "explanationDarija": "« كنقلب باش نشري » كايجي طبيعي أكثر من « بغيت نشري »، خصوصا عند البائع."
+  },
+  {
+    "id": "shal-dayra-correction",
+    "pattern": "\\bshal dayra\\b",
+    "flags": "gi",
+    "natural": "شحال دايرة / بشحال",
+    "registre": "naturel",
+    "explanationFr": "« شحال دايرة » (Shḥal dayra) أو « بشحال » (Bshḥal) هي الصيغة الأكثر طبيعية للسؤال عن الثمن.",
+    "explanationDarija": "« شحال دايرة » ولا « بشحال » هي الطريقة العادية اللي كيسولو بيها على الثمن."
+  }
+]

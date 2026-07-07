@@ -1,0 +1,146 @@
+[
+  {
+    "id": "ana-khassni",
+    "pattern": "\\bana khassni\\b",
+    "flags": "gi",
+    "replacement": "khassni",
+    "type": "grammar",
+    "explanationFr": "En arabe, pour dire « j'ai besoin de », on utilise « خاصني » (khassni) sans le pronom « أنا » (ana).",
+    "explanationDarija": "باش تقول « خاصني » ما كاديرش « أنا » قبل منها."
+  },
+  {
+    "id": "3ad-ma-wsel",
+    "pattern": "\\b3adma wsel\\b",
+    "flags": "gi",
+    "replacement": "3ad ma wsel",
+    "type": "grammar/spelling",
+    "explanationFr": "En Darija, « عاد ما » (3ad ma) s'écrit en deux mots, pas en un seul.",
+    "explanationDarija": "« عاد ما » كاتكتب جوج كلمات ماشي كلمة وحدة."
+  },
+  {
+    "id": "wa7ed-ma3louma",
+    "pattern": "\\bwa7ed ma3louma\\b",
+    "flags": "gi",
+    "replacement": "wa7da ma3louma",
+    "type": "grammar",
+    "explanationFr": "En Darija, « معلومة » (ma3louma) est féminin, donc on dit « وحدا معلومة » (wa7da ma3louma) pas « واحد معلومة » (wa7ed ma3louma).",
+    "explanationDarija": "« معلومة » مؤنثة، خاص تقول « وحدا معلومة » ماشي « واحد معلومة »."
+  },
+  {
+    "id": "l-mochkil-gender",
+    "pattern": "\\bla mochkil\\b",
+    "flags": "gi",
+    "replacement": "l mochkil",
+    "type": "grammar",
+    "explanationFr": "En Darija, « مشكل » (mochkil) est masculin, on dit « المشكل » (l-mochkil).",
+    "explanationDarija": "« مشكل » مذكر، خاص تقول « المشكل » ماشي « لا مشكل »."
+  },
+  {
+    "id": "ana-n3raf",
+    "pattern": "\\bana n3raf\\b",
+    "flags": "gi",
+    "replacement": "ana kan3ref",
+    "type": "grammar",
+    "explanationFr": "Pour dire « je sais » en Darija, on utilise le préfixe « كـ » (ka-) pour le présent : « أنا كانعرف » (ana kan3ref).",
+    "explanationDarija": "باش تقول « كانعرف » في المضارع، خاص تستعمل « كـ » قبل الفعل."
+  },
+  {
+    "id": "ana-nqdar",
+    "pattern": "\\bana nqdar\\b",
+    "flags": "gi",
+    "replacement": "ana kanqdar",
+    "type": "grammar",
+    "explanationFr": "Pour dire « je peux » en Darija, on utilise le préfixe « كـ » (ka-) pour le présent : « أنا كانقدر » (ana kanqdar).",
+    "explanationDarija": "باش تقول « كانقدر » في المضارع، خاص تستعمل « كـ » قبل الفعل."
+  },
+  {
+    "id": "khassni-nmchi",
+    "pattern": "\\bkhassni ana nmchi\\b",
+    "flags": "gi",
+    "replacement": "khassni nmchi",
+    "type": "grammar",
+    "explanationFr": "En Darija, pour exprimer l'obligation, « خاصني نمشي » (khassni nmchi) est suffisant, le pronom « أنا » (ana) est implicite.",
+    "explanationDarija": "باش تقول « خاصني نمشي » ما كاديرش « أنا » قبل منها."
+  },
+  {
+    "id": "kif-dayr-spelling",
+    "pattern": "\\bkeyfdayr\\b",
+    "flags": "gi",
+    "replacement": "kif dayr",
+    "type": "spelling",
+    "explanationFr": "En Darija, l'expression « comment vas-tu ? » s'écrit « كيف داير » (kif dayr) en deux mots.",
+    "explanationDarija": "« كيف داير » كاتكتب جوج كلمات ماشي كلمة وحدة."
+  },
+  {
+    "id": "parking-b",
+    "pattern": "\\bbarking\\b",
+    "flags": "gi",
+    "replacement": "parking",
+    "type": "phonology",
+    "explanationFr": "Le son « P » n'existe pas en arabe dialectal, mais il est présent dans des mots empruntés au français. Il faut faire attention à le prononcer correctement.",
+    "explanationDarija": "الصوت « P » ما كاينش في العربية الدارجة، ولكن كاين في كلمات فرنسية كنستعملوها. خاص ترد البال كيفاش تنطقو."
+  },
+  {
+    "id": "men-sh7al",
+    "pattern": "\\bdayr men simana\\b",
+    "flags": "gi",
+    "replacement": "men simana",
+    "type": "grammar",
+    "explanationFr": "Pour indiquer une durée, on dit « من سيمانة » (men simana) ou « داير سيمانة » (dayr simana), mais pas les deux ensemble.",
+    "explanationDarija": "باش تبين المدة، قول « من سيمانة » ولا « داير سيمانة »، ماشي بجوج."
+  },
+  {
+    "id": "bach-ndir-error",
+    "pattern": "\\bbach ana ndir\\b",
+    "flags": "gi",
+    "replacement": "bach ndir",
+    "type": "grammar",
+    "explanationFr": "Après « باش » (bach), le pronom personnel est implicite dans la conjugaison du verbe : « باش ندير » (bach ndir) suffit.",
+    "explanationDarija": "من بعد « باش »، الضمير الشخصي كيكون ضمني في تصريف الفعل، يكفي تقول « باش ندير »."
+  },
+  {
+    "id": "naqesni-flous",
+    "pattern": "\\b3andi naqes\\b",
+    "flags": "gi",
+    "replacement": "naqesni",
+    "type": "grammar",
+    "explanationFr": "Pour exprimer un manque, on dit « ناقصني » (naqesni) plutôt que « عندي ناقص » (3andi naqes).",
+    "explanationDarija": "باش تعبر على النقص، قول « ناقصني » ماشي « عندي ناقص »."
+  },
+  {
+    "id": "ana-mnasya",
+    "pattern": "\\bana mnasya\\b",
+    "flags": "gi",
+    "replacement": "ana nsit",
+    "type": "grammar",
+    "explanationFr": "Pour dire « j'ai oublié » en Darija, on utilise le verbe « نسيت » (nsit) directement, pas une forme passive comme « أنا منسية ».",
+    "explanationDarija": "باش تقول « نسيت »، استعمل الفعل « نسيت » مباشرة، ماشي « أنا منسية »."
+  },
+  {
+    "id": "bzaf-men-error",
+    "pattern": "\\bbzaf men ann\\b",
+    "flags": "gi",
+    "replacement": "bzaf men",
+    "type": "grammar",
+    "explanationFr": "En Darija, pour exprimer la quantité « beaucoup de », on dit « بزاف من » (bzaf men), sans ajouter « أن » (ann).",
+    "explanationDarija": "باش تعبر على « بزاف من »، ما تزيدش « أن » من بعدها."
+  },
+  {
+    "id": "wash-collé",
+    "pattern": "\\bwashmen\\b",
+    "flags": "gi",
+    "replacement": "wash men",
+    "type": "spelling",
+    "explanationFr": "En Darija, pour dire « quel/quelle », c'est « واش من » (wash men) en deux mots.",
+    "explanationDarija": "« واش من » كاتكتب جوج كلمات ماشي كلمة وحدة."
+  },
+  {
+    "id": "nmchi-l-tbib",
+    "pattern": "\\bnmchi l tbib\\b",
+    "flags": "gi",
+    "replacement": "nmchi 3and tbib",
+    "type": "lexical",
+    "explanationFr": "Pour dire « je vais chez le médecin » en Darija, on utilise « عند » (3and) pour indiquer 'chez' une personne.",
+    "explanationDarija": "باش تقول « نمشي عند الطبيب »، كنستعملو « عند » ماشي « لـ »."
+  }
+]

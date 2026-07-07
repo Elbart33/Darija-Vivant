@@ -1,0 +1,21 @@
+{
+  "name": "عربي حي",
+  "short_name": "ع. حي",
+  "description": "ممارسة يومية لتحويل لغة عربية وظيفية إلى لغة طبيعية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF9F3",
+  "theme_color": "#E0B460",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
