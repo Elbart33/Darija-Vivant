@@ -39,8 +39,13 @@ export function useAnalysis() {
                 before: rawSentence,
                 after: ai.corrected,
                 explanationFr:
-                  ai.correctionExplanationFr || "Une petite correction a été apportée.",
-                explanationDarija: ai.correctionExplanationDarija || "تم إجراء تصحيح بسيط.",
+                  ai.provider === "gemini"
+                    ? ""
+                    : ai.correctionExplanationFr || "Une petite correction a été apportée.",
+                explanationDarija:
+                  ai.provider === "gemini"
+                    ? ai.correctionExplanationDarija || "تم إجراء تصحيح بسيط."
+                    : ai.correctionExplanationDarija || "",
                 stage: "correction",
               },
             ]
@@ -52,9 +57,14 @@ export function useAnalysis() {
                 before: ai.corrected,
                 after: ai.improved,
                 explanationFr:
-                  ai.improvementExplanationFr ||
-                  "Reformulation proposée pour sonner plus naturel.",
-                explanationDarija: ai.improvementExplanationDarija || "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية.",
+                  ai.provider === "gemini"
+                    ? ""
+                    : ai.improvementExplanationFr ||
+                      "Reformulation proposée pour sonner plus naturel.",
+                explanationDarija:
+                  ai.provider === "gemini"
+                    ? ai.improvementExplanationDarija || "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية."
+                    : ai.improvementExplanationDarija || "",
                 stage: "amelioration",
               },
             ]
