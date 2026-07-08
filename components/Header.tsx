@@ -14,8 +14,12 @@ export default function Header() {
     <header className="sticky top-0 z-30 border-b border-zellige/10 bg-sand/90 backdrop-blur dark:border-sand/10 dark:bg-ink/90">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-[#8B0000] text-white text-lg font-bold">
-            A
+          <span
+            dir="rtl"
+            lang="ar"
+            className="grid h-8 w-8 place-items-center rounded-full bg-[#8B0000] text-white text-lg font-bold"
+          >
+            أ
           </span>
           <span className="font-display text-lg font-semibold tracking-tight text-ink dark:text-sand">
             Arabe Vivant
