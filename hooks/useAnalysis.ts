@@ -32,7 +32,9 @@ export function useAnalysis() {
         usedAI = true;
         corrected = ai.corrected;
         improved = ai.improved;
-        correctionNotes = ai.correctionChanged
+        const hasAiCorrectionOccurred = ai.corrected !== rawSentence;
+
+        correctionNotes = hasAiCorrectionOccurred
           ? [
               {
                 ruleId: `ai-correction-${ai.provider}`,
@@ -50,21 +52,21 @@ export function useAnalysis() {
               },
             ]
           : [];
+
         let improvementExplanationFr = "";
         let improvementExplanationDarija = "";
 
         const defaultImprovementExplanationFr = "Reformulation proposée pour sonner plus naturel.";
         const defaultImprovementExplanationDarijaGemini = "تم اقتراح إعادة صياغة لجعلها تبدو أكثر طبيعية.";
 
-        if (ai.improvementChanged) {
+        const hasAiImprovementOccurred = ai.improved !== ai.corrected;
+
+        if (hasAiImprovementOccurred) {
           if (ai.provider === "gemini") {
-            // Pour Gemini, l'explication française est vide par design.
             improvementExplanationFr = "";
             improvementExplanationDarija = ai.improvementExplanationDarija || defaultImprovementExplanationDarijaGemini;
           } else {
-            // Pour les autres fournisseurs, utiliser l'explication fournie ou la valeur par défaut française.
             improvementExplanationFr = ai.improvementExplanationFr || defaultImprovementExplanationFr;
-            // L'explication darija n'est pas attendue des autres fournisseurs, donc elle est vide ou celle fournie par AI.
             improvementExplanationDarija = ai.improvementExplanationDarija || "";
           }
 
