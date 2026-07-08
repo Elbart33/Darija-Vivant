@@ -162,10 +162,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, reason: "no_content" });
     }
 
-    const correctionExplanationFr = parsed.correctionExplanationFr || "";
-    const correctionExplanationDarija = parsed.correctionExplanationDarija || "";
-    const improvementExplanationFr = parsed.improvementExplanationFr || "";
-    const improvementExplanationDarija = parsed.improvementExplanationDarija || "";
+let correctionExplanationFr = "";
+    let correctionExplanationDarija = "";
+    let improvementExplanationFr = "";
+    let improvementExplanationDarija = "";
+
+    if (usedProvider === "gemini") {
+      correctionExplanationDarija = parsed.correctionExplanationDarija || "";
+      improvementExplanationDarija = parsed.improvementExplanationDarija || "";
+    } else {
+      correctionExplanationFr = parsed.correctionExplanationFr || "";
+      improvementExplanationFr = parsed.improvementExplanationFr || "";
+    }
 
     return NextResponse.json({
       ok: true,
