@@ -63,12 +63,12 @@ export default function SituationFlowClient({ id }: { id: string }) {
   if (!situation || !shuffled) {
     return (
       <div className="rounded-2xl border border-ink/10 bg-white/60 p-6 text-center dark:border-sand/10 dark:bg-ink/40">
-        <p className="text-ink/70 dark:text-sand/70">Cette situation n'existe pas (ou plus).</p>
+        <p className="text-ink/70 dark:text-sand/70" dir="rtl" lang="ar">هاد الوضعية ما كايناش (ولا مزال).</p>
         <button
           onClick={() => router.push("/")}
           className="mt-4 rounded-full bg-zellige px-5 py-2 text-sm font-semibold text-sand"
         >
-          Retour à l'accueil
+          عود للصفحة الرئيسية
         </button>
       </div>
     );
@@ -128,7 +128,7 @@ export default function SituationFlowClient({ id }: { id: string }) {
           >
             {situation.comprehension.prompt}
           </p>
-          <p className="font-medium text-ink dark:text-sand">{situation.comprehension.question}</p>
+          <p className="font-medium text-ink dark:text-sand" dir="rtl" lang="ar">{situation.comprehension.question}</p>
           <div className="space-y-2">
             {shuffled.shuffledOptions.map((opt, i) => {
               const isCorrect = i === shuffled.newAnswerIndex;
@@ -138,9 +138,9 @@ export default function SituationFlowClient({ id }: { id: string }) {
                   key={i}
                   onClick={() => handleOptionSelect(i)}
                   disabled={showAnswer}
-                  dir="rtl" // Set direction to Right-To-Left for Arabic options
-                  lang="ar" // Indicate Arabic language
-                  className={`w-full rounded-xl border px-4 py-3 text-right text-sm transition-colors ${ // Changed text-left to text-right for RTL
+                  dir="rtl"
+                  lang="ar"
+                  className={`w-full rounded-xl border px-4 py-3 text-right text-sm transition-colors ${
                     showAnswer && isCorrect
                       ? "animate-correctPulse border-zellige bg-zellige/10 text-zellige2 font-semibold dark:border-zellige dark:bg-zellige/20 dark:text-sand"
                       : showAnswer && isSelected && !isCorrect
@@ -154,29 +154,40 @@ export default function SituationFlowClient({ id }: { id: string }) {
             })}
           </div>
           {showAnswer && (
-            <button
-              onClick={() => setStep("input")}
-              dir="rtl"
-              lang="ar"
-              className="rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02]"
-            >
-              الاستمرار
-            </button>
+            <div className="mt-4 p-3 rounded-xl bg-mist/50 dark:bg-ink/30">
+              {selectedOption === shuffled.newAnswerIndex ? (
+                <p dir="rtl" lang="ar" className="text-sm text-zellige2 dark:text-saffron font-medium">
+                  صحيح! الإجابة الصحيحة هي: « {situation.comprehension.options[situation.comprehension.answerIndex]} ».
+                </p>
+              ) : (
+                <p dir="rtl" lang="ar" className="text-sm text-clay dark:text-rose font-medium">
+                  الإجابة الصحيحة هي: « {situation.comprehension.options[situation.comprehension.answerIndex]} ».
+                </p>
+              )}
+              <button
+                onClick={() => setStep("input")}
+                dir="rtl"
+                lang="ar"
+                className="mt-3 rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02]"
+              >
+                الاستمرار
+              </button>
+            </div>
           )}
         </div>
       )}
 
       {step === "input" && (
         <div className="animate-fadeUp space-y-4 rounded-2xl border border-ink/10 bg-white/60 p-6 dark:border-sand/10 dark:bg-ink/40">
-          <p className="font-medium text-ink dark:text-sand">{situation.task}</p>
-          <p className="text-sm text-ink/50 dark:text-sand/50">{situation.starterHint}</p>
+          <p className="font-medium text-ink dark:text-sand" dir="rtl" lang="ar">{situation.task}</p>
+          <p className="text-sm text-ink/50 dark:text-sand/50" dir="rtl" lang="ar">{situation.starterHint}</p>
           <textarea
             value={userSentence}
             onChange={(e) => setUserSentence(e.target.value)}
             rows={4}
-            placeholder="اكتب إجابتك هنا، كما ستقولها شفهيا..." // "Write your answer here, as you would say it orally..."
-            dir="rtl" // Set direction to Right-To-Left for Arabic input
-            lang="ar" // Indicate Arabic language
+            placeholder="اكتب إجابتك هنا، كما ستقولها شفهيا..."
+            dir="rtl"
+            lang="ar"
             style={{ colorScheme: "light" }}
             className="w-full rounded-xl border border-ink/15 bg-white p-4 text-ink placeholder:text-ink/30 transition-colors duration-200 focus:border-zellige dark:border-sand/15 dark:bg-ink/60 dark:text-sand dark:placeholder:text-sand/30 dark:focus:border-saffron"
           />
@@ -185,7 +196,7 @@ export default function SituationFlowClient({ id }: { id: string }) {
             disabled={!userSentence.trim() || loading}
             className="rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02] disabled:opacity-40"
           >
-            {loading ? "Analyse en cours..." : "Voir ma correction"}
+            {loading ? "جاري التحليل..." : "شوف التصحيح"}
           </button>
         </div>
       )}
@@ -195,19 +206,19 @@ export default function SituationFlowClient({ id }: { id: string }) {
           <BeforeAfter result={result} />
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-xs text-ink/40 dark:text-sand/40">
-              {autoSaved ? "Progression enregistrée" : "Enregistrement..."}
+              {autoSaved ? "تم حفظ التقدم" : "جاري الحفظ..."}
             </span>
             <button
               onClick={handleAnotherSituation}
               className="rounded-full bg-saffron px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
             >
-              Une autre situation
+              وضعية أخرى
             </button>
             <button
               onClick={() => router.push("/")}
               className="rounded-full border border-ink/15 px-5 py-2.5 text-sm font-semibold text-ink/70 hover:bg-white dark:border-sand/15 dark:text-sand/70 dark:hover:bg-ink/60"
             >
-              Retour à l'accueil
+              عود للصفحة الرئيسية
             </button>
           </div>
         </div>
