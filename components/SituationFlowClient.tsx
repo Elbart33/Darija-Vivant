@@ -110,9 +110,11 @@ export default function SituationFlowClient({ id }: { id: string }) {
           <p dir="rtl" lang="ar" className="text-ink/80 leading-relaxed dark:text-sand/80">{situation.context}</p>
           <button
             onClick={() => setStep("comprehension")}
+            dir="rtl"
+            lang="ar"
             className="rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02]"
           >
-            Continuer
+            الاستمرار
           </button>
         </div>
       )}
@@ -154,9 +156,11 @@ export default function SituationFlowClient({ id }: { id: string }) {
           {showAnswer && (
             <button
               onClick={() => setStep("input")}
+              dir="rtl"
+              lang="ar"
               className="rounded-full bg-zellige px-5 py-2.5 text-sm font-semibold text-sand transition-transform hover:scale-[1.02]"
             >
-              Continuer
+              الاستمرار
             </button>
           )}
         </div>
