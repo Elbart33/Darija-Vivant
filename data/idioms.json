@@ -2,98 +2,98 @@
   {
     "id": "akhd-maw'id",
     "expression": "أخذ موعد (Akhd maw'id)",
-    "meaningFr": "Organiser une heure précise pour rencontrer quelqu'un (médecin, coiffeur, administration).",
+    "meaningFr": "تنظيم موعد محدد لمقابلة شخص (طبيب، حلاق، إدارة).",
     "meaningDarija": "تقاد وقت محدد باش تشوف شي حد (طبيب، حلاق، إدارة).",
     "example": "بغيت ناخد موعد مع الطبيب نهار الخميس."
   },
   {
     "id": "fih-l7al",
     "expression": "فيه الحال / ضرني (Fih l7al / Drrani)",
-    "meaningFr": "Ressentir une douleur à un endroit précis du corps.",
+    "meaningFr": "الإحساس بألم في مكان معين من الجسم.",
     "meaningDarija": "تحس بالوجع فشي بلاصة معينة في الجسم.",
     "example": "ضرني ظهري من ثلاث أيام."
   },
   {
     "id": "men-foqach",
     "expression": "من فوقاش (Men fouqach) / من (3 أيام) (Men (3 ayam))",
-    "meaningFr": "Indique le début d'une situation qui continue encore maintenant.",
+    "meaningFr": "يشير إلى بداية وضع لا يزال مستمرا حتى الآن.",
     "meaningDarija": "كاتبين بداية شي حاجة اللي مازال مستمرة.",
     "example": "الإنترنت ما خداماش من البارح بالليل."
   },
   {
     "id": "ma-khdamch",
     "expression": "ما خدامش / خاسر (Ma khdamch / Khaser)",
-    "meaningFr": "Un appareil ou un service ne marche plus.",
+    "meaningFr": "جهاز أو خدمة لا تعمل.",
     "meaningDarija": "آلة أو خدمة ما بقاتش خدامة.",
     "example": "البوكس خاسرة من صباح اليوم."
   },
   {
     "id": "khasek-tjib",
     "expression": "خاصك تجيب / ناقص (Khasek tjib / Naqes)",
-    "meaningFr": "Quelque chose n'est pas présent alors que c'est nécessaire.",
+    "meaningFr": "شيء غير موجود وهو ضروري.",
     "meaningDarija": "شي حاجة ما كايناش و هي ضرورية.",
     "example": "خاصك تجيب شهادة السكن."
   },
   {
     "id": "f-aqrab-waqt",
     "expression": "في أقرب وقت (F aqrab waqt)",
-    "meaningFr": "Le plus rapidement possible, formule utilisée à l'administration.",
+    "meaningFr": "في أقرب وقت ممكن، صيغة تستخدم في الإدارة.",
     "meaningDarija": "بأسرع ما يمكن، تعبير كيستعملوه في الإدارة.",
     "example": "عفاك صيفط الملف في أقرب وقت."
   },
   {
     "id": "shal-dayra",
     "expression": "شحال دايرة / بشحال (Shḥal dayra / Bshḥal)",
-    "meaningFr": "Pour demander ou indiquer un prix.",
+    "meaningFr": "للسؤال عن السعر أو الإشارة إليه.",
     "meaningDarija": "باش تسول ولا تبين على الثمن.",
     "example": "شحال داير كيلو مطيشة؟"
   },
   {
     "id": "bghit",
     "expression": "بغيت / عفاك (Bghit / 3afak)",
-    "meaningFr": "Forme polie pour exprimer un souhait ou une demande.",
+    "meaningFr": "صيغة مهذبة للتعبير عن رغبة أو طلب.",
     "meaningDarija": "صيغة مؤدبة باش تعبر على رغبة أو طلب.",
     "example": "بغيت كيلو مطيشة، عفاك."
   },
   {
     "id": "bloquer-carte",
     "expression": "نبلوكي الكارطة (Nebloki lkarta)",
-    "meaningFr": "Bloquer une carte bancaire ou un chèque pour éviter une utilisation frauduleuse.",
+    "meaningFr": "حظر بطاقة بنكية أو شيك لتجنب الاستخدام الاحتيالي.",
     "meaningDarija": "نوقف بطاقة بنكية أو شيك باش ما يتستعملوش بطريقة غير قانونية.",
     "example": "غادي نبلوكي الكارطة ديالي دغيا."
   },
   {
     "id": "men-sh7al",
     "expression": "من شحال هادي (Men shḥal hadi) / شي (ساعتين) (Shi (sa3atayn))",
-    "meaningFr": "Indique un moment précis dans le passé.",
+    "meaningFr": "يشير إلى لحظة معينة في الماضي.",
     "meaningDarija": "كاتبين على وقت محدد في الماضي.",
     "example": "ضاعت ليا الكارطة شي ساعتين هادي."
   },
   {
     "id": "wach-3andkom",
     "expression": "واش عندكم (Wach 3andkom)",
-    "meaningFr": "Formule polie pour demander une disponibilité, sans l'affirmer comme certaine.",
+    "meaningFr": "صيغة مهذبة لطلب توفر شيء، دون تأكيده.",
     "meaningDarija": "طريقة مؤدبة باش تسول على شي حاجة متوفرة.",
     "example": "واش عندكم شي بلاصة خاوية غدا صباح؟"
   },
   {
     "id": "lsh7al-men-shakhs",
     "expression": "لشحال من شخص / باشمن سمية (Lshḥal men shakhṣ / Bashmen smiya)",
-    "meaningFr": "Questions typiques pour organiser une réservation.",
+    "meaningFr": "أسئلة نموذجية لتنظيم حجز.",
     "meaningDarija": "أسئلة شائعة لتنظيم حجز.",
     "example": "لشحال من شخص، وباشمن سمية؟"
   },
   {
     "id": "kunt-kanṣewwel-wach",
     "expression": "كنت كانسول واش (Kunt kanṣewwel wach)",
-    "meaningFr": "Formule douce et polie pour poser une question délicate ou gênante.",
+    "meaningFr": "صيغة لطيفة ومهذبة لطرح سؤال حساس أو محرج.",
     "meaningDarija": "طريقة لطيفة ومؤدبة باش تسول سؤال حساس.",
     "example": "كنت كانسول واش الصالير غادي يوصل قريبا."
   },
   {
     "id": "wach-mumkin",
     "expression": "واش ممكن (Wach mumkin)",
-    "meaningFr": "Formule très polie et formelle pour demander une faveur ou un délai.",
+    "meaningFr": "صيغة مهذبة ورسمية جداً لطلب خدمة أو مهلة.",
     "meaningDarija": "طريقة رسمية ومؤدبة بزاف باش تطلب شي خدمة أو أجل.",
     "example": "واش ممكن نأجل الدفع بسيمانة؟"
   }
