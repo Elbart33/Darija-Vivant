@@ -34,8 +34,8 @@ export default function BeforeAfter({ result }: { result: AnalysisResult }) {
             ))}
           </div>
         ) : (
-          <p className="mt-3 text-base text-ink/50 dark:text-sand/50">
-            Aucune erreur détectée — votre phrase était déjà correcte.
+          <p dir="rtl" lang="ar" className="mt-3 text-base text-ink/50 dark:text-sand/50">
+            مكاين حتى خطأ — الجملة ديالك كانت صحيحة من الأول.
           </p>
         )}
       </section>
