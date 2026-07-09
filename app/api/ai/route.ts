@@ -6,60 +6,99 @@ import { callGemini } from "@/lib/engine/providers/gemini";
 
 export const runtime = "edge";
 
-const SYSTEM_PROMPT_MISTRAL = `Tu es un coach de français discret pour un adulte francophone d'origine marocaine (darija), niveau A2+/B1.
+const SYSTEM_PROMPT_MISTRAL = `Tu es un coach d'arabe discret pour un 
+adulte francophone qui apprend l'arabe (darija marocaine), niveau A2+/B1.
 
-Tu reçois UNE phrase en français, telle que l'utilisateur l'a écrite.
+Tu reçois UNE phrase en arabe, telle que l'utilisateur l'a écrite (en 
+caractères arabes).
 
 Fais deux passes, dans l'ordre :
 
-1) CORRECTION — corrige uniquement les erreurs réelles : grammaire, conjugaison, genre, accords, confusions phonologiques fréquentes chez un locuteur darija (ex: b/p), calques lexicaux du darija/arabe vers le français. Ne change rien d'autre. Si la phrase est déjà correcte, "corrected" doit être identique à la phrase reçue.
+1) CORRECTION — corrige uniquement les erreurs réelles : grammaire, 
+conjugaison, genre, accords, confusions fréquentes chez un francophone qui 
+apprend l'arabe. Ne change rien d'autre. Si la phrase est déjà correcte, 
+"corrected" doit être identique à la phrase reçue.
 
-2) AMÉLIORATION — à partir de la version corrigée, propose une reformulation plus naturelle, idiomatique, au registre courant poli, sans changer le sens. Si la phrase corrigée est déjà naturelle, "improved" doit être identique à "corrected".
+2) AMÉLIORATION — à partir de la version corrigée, propose une 
+reformulation plus naturelle et idiomatique en darija marocaine parlée, 
+sans changer le sens. Si la phrase corrigée est déjà naturelle, "improved" 
+doit être identique à "corrected".
 
-Pour chaque passe où tu as changé la phrase, donne une explication très courte en français (une phrase, simple, jamais de jargon grammatical technique).
-Si tu n'as rien changé à une passe, laisse l'explication correspondante vide ("").
+Pour chaque passe où tu as changé la phrase, donne une explication très 
+courte en français (une phrase, simple, jamais de jargon grammatical 
+technique).
+Si tu n'as rien changé à une passe, laisse l'explication correspondante 
+vide ("").
 
-Réponds STRICTEMENT en JSON valide, sans texte ni markdown autour, avec exactement ce format:
-{"corrected": "...", "correctionChanged": true, "correctionExplanationFr": "...", "improved": "...", "improvementChanged": true, "improvementExplanationFr": "..."}`;
+Réponds STRICTEMENT en JSON valide, sans texte ni markdown autour, avec 
+exactement ce format:
+{"corrected": "...", "correctionChanged": true, "correctionExplanationFr": 
+"...", "improved": "...", "improvementChanged": true, 
+"improvementExplanationFr": "..."}`;
 
-const SYSTEM_PROMPT_GEMINI = `أنت مدرب دارجة مغربية و فرنسية. خدمتك هي تصحيح الجمل ديال الناس اللي كيتعلموا الفرنسية.
+const SYSTEM_PROMPT_GEMINI = `Tu es un coach d'arabe (darija marocaine) 
+pour un francophone qui apprend l'arabe, niveau A2+/B1.
 
-مهمتك:
-1. تصحيح الجملة من ناحية القواعد و الصرف و التذكير و التأنيث.
-2. تحسين الجملة باش تكون أكثر طبيعية فالمحكية (شفهية)، ماشي أكثر رسمية أو مكتوبة.
-3. شرح التصحيح و التحسين بالدارجة المغربية **بشكل مبسط و تعليمي**.
+Ta mission :
+1. Corriger la phrase (grammaire, conjugaison, genre).
+2. Améliorer la phrase pour qu'elle soit plus naturelle en darija parlée.
+3. Expliquer la correction et l'amélioration en français, de façon simple 
+et pédagogique.
 
-قواعد مهمة على التحسين (المرحلة 2):
-- المستوى المستهدف هو فرنسية صحيحة و مزيانة، ماشي رسمية بزاف و ماشي دارجة بزاف. بلاصة وسطى.
-- خلي الكلمات اللي دخلات فالاستعمال اليومي كيفما هي (بحال «ça»)، ماشي كل مرة تبدلها بكلمة رسمية بحال «cela».
-- ممكن تزيد شوية فالمستوى مقارنة مع الجملة الأصلية، بشرط تبقى طبيعية و قابلة للاستعمال فالحياة اليومية.
-- إلا كانت الجملة المصححة (بعد المرحلة 1) طبيعية بزاف، خلي "improved" بحال "corrected" بلا تبديل.
+Règles importantes sur l'amélioration :
+- Vise un niveau de darija correcte et naturelle, ni trop soutenue ni trop 
+familière.
+- Si la phrase corrigée est déjà naturelle, "improved" doit être identique 
+à "corrected".
 
-قاعدة إضافية على المحتوى (ماشي غير الشكل):
-- غادي نعطيك المهمة المطلوبة (task) اللي كان خاص المستخدم يجاوب عليها. إلا كانت إجابة المستخدم ما كتجاوبش على هاد المهمة بالضبط، أو بعيدة على الموضوع، زيد شي جملة قصيرة فالشرح ديال التحسين (improvementExplanationDarija) كتوضح بلطف علاش الجواب ماشي مناسب للمهمة. هادشي غير إلا كان واضح بزاف أن الجواب بعيد على الموضوع، ماشي فكل مرة.
-
-قواعد مهمة على الشرح بالدارجة:
-- كترد فقط بالدارجة المغربية، مكتوبة بالحروف العربية. ماشي بالحروف اللاتينية.
-- الشرح ديالك يكون قصير و مفهوم و بالدارجة، بجملة وحدة أو جوج على الأكثر.
-- **إذا كان هناك تغيير في التصحيح (correctionChanged=true) أو في التحسين (improvementChanged=true)، يجب عليك دائمًا تقديم شرح بالدارجة (correctionExplanationDarija أو improvementExplanationDarija)، حتى لو كان بسيطًا جدًا، لتعزيز التعلم.**
-- حدد الكلمة أو القاعدة الأساسية فالشرح (هادي اللي المستخدم خاصو يديرلها بالا بزاف) و دير حواليها نجمتين هكا: **الكلمة**. غير كلمة وحدة أو عبارة قصيرة كل مرة، ماشي أكثر من هادشي.
-- إلا كانت الكلمة المميزة هادي بالفرنسية أو بحروف لاتينية، خاصك تجمع بين النجمتين و علامات « » بهاد الشكل بالضبط: **«mot»**.
-- إلا كانت الكلمة المميزة بالدارجة (بالعربية)، خليها غير بين نجمتين بلا علامات « »: **الكلمة**.
-- إلا كانت فالج جملة كثر من غلطة وحدة، ما تديرش لائحة مرقمة (1، 2، 3). غير اربط الشرح بكلمات ساهلة كيف "و كذلك" ولا "و زيادة على هادشي"، باش يبقى الشرح كيف كتهضر مع صاحبك، ماشي كيف درس.
-- الجواب يكون JSON بهذا الشكل بالضبط:
+Règles sur l'explication en français :
+- Réponds uniquement en français, de façon claire et courte (une à deux 
+phrases maximum).
+- Si tu cites un mot ou une expression en arabe dans l'explication, 
+mets-le entre guillemets français comme ceci : «الكلمة».
+- Mets en gras le mot ou la règle essentielle à retenir avec des doubles 
+astérisques, par exemple **«كلمة»**.
+- S'il y a plusieurs erreurs dans la phrase, ne fais pas de liste 
+numérotée : relie les explications avec des mots simples comme "et aussi" 
+ou "de plus", pour que ça sonne naturel, pas scolaire.
+- La réponse doit être un JSON exactement dans ce format :
 {
   "corrected": "الجملة المصححة",
   "correctionChanged": true,
-  "correctionExplanationDarija": "شرح التصحيح بالدارجة",
+  "correctionExplanationDarija": "explication de la correction en 
+français",
   "improved": "الجملة المحسنة",
   "improvementChanged": true,
-  "improvementExplanationDarija": "شرح التحسين بالدارجة"
+  "improvementExplanationDarija": "explication de l'amélioration en 
+français"
 }
 
-إذا ما بدلتي حاجة فالتصحيح، خلي correctionChanged=false و الشرح فارغ.
-إذا ما بدلتي حاجة فالتصحيح، خلي correctionExplanationDarija فارغ.
-إذا ما بدلتي حاجة فالتحسين، خلي improvementChanged=false و الشرح فارغ.
-إذا ما بدلتي حاجة فالتحسين، خلي improvementExplanationDarija فارغ.`;
+Si tu n'as rien changé à la correction, mets correctionChanged=false et 
+laisse l'explication vide.
+Si tu n'as rien changé à l'amélioration, mets improvementChanged=false et 
+laisse l'explication vide.
+
+Ne réponds jamais avec du texte ou du markdown en dehors du JSON.`;
+
+const SYSTEM_PROMPT_GROQ_DARIJA = `Tu es un coach d'arabe (darija 
+marocaine) pour un francophone qui apprend l'arabe, niveau A2+/B1.
+
+Ta mission :
+1. Corriger la phrase (grammaire, conjugaison, genre).
+2. Améliorer la phrase pour qu'elle soit plus naturelle en darija parlée.
+3. Expliquer la correction et l'amélioration en français, simplement.
+
+Règles :
+- Une à deux phrases d'explication maximum, en français, simples et 
+claires.
+- Mets le mot ou la règle essentielle entre doubles astérisques, par 
+exemple **«كلمة»**.
+- Si tu n'as rien changé, laisse l'explication vide ("").
+
+Réponds uniquement avec ce format JSON, sans texte ni markdown autour :
+{"corrected": "...", "correctionChanged": true, 
+"correctionExplanationDarija": "...", "improved": "...", 
+"improvementChanged": true, "improvementExplanationDarija": "..."}`;
 
 function extractString(text: string, key: string): string {
   const re = new RegExp(`"${key}"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`, "s");
@@ -81,7 +120,8 @@ export async function POST(req: NextRequest) {
     const situationTask: string = body?.situationTask || "";
 
     if (!sentence.trim()) {
-      return NextResponse.json({ ok: false, reason: "empty" }, { status: 400 });
+      return NextResponse.json({ ok: false, reason: "empty" }, { status: 
+400 });
     }
 
     const provider = (process.env.AI_PROVIDER || "none").toLowerCase();
@@ -99,34 +139,53 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const userPrompt = `Situation: ${situationTitle}\nTâche demandée: ${situationTask}\nPhrase: "${sentence}"`;
+    const userPrompt = `Situation: ${situationTitle}\nTâche demandée: 
+${situationTask}\nPhrase: "${sentence}"`;
 
     let raw: string;
     let usedProvider: string = provider;
 
     try {
       if (provider === "gemini") {
-        const params = { system: SYSTEM_PROMPT_GEMINI, user: userPrompt };
-        raw = await callGemini(params);
-        usedProvider = "gemini";
+        try {
+          const params = { system: SYSTEM_PROMPT_GEMINI, user: userPrompt 
+};
+          raw = await callGemini(params);
+          usedProvider = "gemini";
+        } catch (geminiErr) {
+          console.error("Gemini failed, falling back to Groq:", 
+geminiErr);
+          const params = { system: SYSTEM_PROMPT_GROQ_DARIJA, user: 
+userPrompt };
+          raw = await callGroq(params);
+          usedProvider = "groq-darija";
+        }
       } else if (provider === "mistral") {
-        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt };
+        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt 
+};
         raw = await callMistral(params);
         usedProvider = "mistral";
       } else if (provider === "groq") {
-        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt };
+        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt 
+};
         raw = await callGroq(params);
         usedProvider = "groq";
       } else if (provider === "ollama") {
-        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt };
+        const params = { system: SYSTEM_PROMPT_MISTRAL, user: userPrompt 
+};
         raw = await callOllama(params);
         usedProvider = "ollama";
       } else {
-        return NextResponse.json({ ok: false, reason: "unknown_provider" });
+        return NextResponse.json({ ok: false, reason: "unknown_provider" 
+});
       }
     } catch (err) {
       console.error("Provider error:", err);
-      return NextResponse.json({ ok: false, reason: "provider_error" });
+      const isBusy = err instanceof Error && err.message === "COACH_BUSY";
+      return NextResponse.json({
+        ok: false,
+        reason: isBusy ? "coach_busy" : "provider_error",
+      });
     }
 
     const cleaned = raw.replace(/```json|```/g, "").trim();
@@ -144,17 +203,22 @@ export async function POST(req: NextRequest) {
       const corrected = extractString(raw, "corrected");
       if (!corrected) {
         console.error("Parse error (fallback failed). Raw:", raw);
-        return NextResponse.json({ ok: false, reason: "parse_error", debugRaw: raw });
+        return NextResponse.json({ ok: false, reason: "parse_error", 
+debugRaw: raw });
       }
       parsed = {
         corrected,
         correctionChanged: extractBool(raw, "correctionChanged"),
-        correctionExplanationFr: extractString(raw, "correctionExplanationFr"),
-        correctionExplanationDarija: extractString(raw, "correctionExplanationDarija"),
+        correctionExplanationFr: extractString(raw, 
+"correctionExplanationFr"),
+        correctionExplanationDarija: extractString(raw, 
+"correctionExplanationDarija"),
         improved: extractString(raw, "improved") || corrected,
         improvementChanged: extractBool(raw, "improvementChanged"),
-        improvementExplanationFr: extractString(raw, "improvementExplanationFr"),
-        improvementExplanationDarija: extractString(raw, "improvementExplanationDarija"),
+        improvementExplanationFr: extractString(raw, 
+"improvementExplanationFr"),
+        improvementExplanationDarija: extractString(raw, 
+"improvementExplanationDarija"),
       };
     }
 
@@ -162,14 +226,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, reason: "no_content" });
     }
 
-let correctionExplanationFr = "";
+    let correctionExplanationFr = "";
     let correctionExplanationDarija = "";
     let improvementExplanationFr = "";
     let improvementExplanationDarija = "";
 
-    if (usedProvider === "gemini") {
-      correctionExplanationDarija = parsed.correctionExplanationDarija || "";
-      improvementExplanationDarija = parsed.improvementExplanationDarija || "";
+    if (usedProvider === "gemini" || usedProvider === "groq-darija") {
+      correctionExplanationDarija = parsed.correctionExplanationDarija || 
+"";
+      improvementExplanationDarija = parsed.improvementExplanationDarija 
+|| "";
     } else {
       correctionExplanationFr = parsed.correctionExplanationFr || "";
       improvementExplanationFr = parsed.improvementExplanationFr || "";
@@ -189,6 +255,7 @@ let correctionExplanationFr = "";
     });
   } catch (err) {
     console.error("Unexpected error:", err);
-    return NextResponse.json({ ok: false, reason: "unexpected_error" }, { status: 500 });
+    return NextResponse.json({ ok: false, reason: "unexpected_error" }, { 
+status: 500 });
   }
 }
