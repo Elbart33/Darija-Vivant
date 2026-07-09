@@ -41,13 +41,11 @@ export function useAnalysis() {
                 before: rawSentence,
                 after: ai.corrected,
                 explanationFr:
-                  ai.provider === "gemini"
-                    ? ""
-                    : ai.correctionExplanationFr || "Une petite correction a été apportée.",
+                  ai.correctionExplanationFr ||
+                  (ai.provider !== "gemini" ? "Une petite correction a été apportée." : ""),
                 explanationDarija:
-                  ai.provider === "gemini"
-                    ? ai.correctionExplanationDarija || "تم إجراء تصحيح بسيط."
-                    : ai.correctionExplanationDarija || "",
+                  ai.correctionExplanationDarija ||
+                  (ai.provider === "gemini" ? "تم إجراء تصحيح بسيط." : ""),
                 stage: "correction",
               },
             ]
@@ -62,13 +60,12 @@ export function useAnalysis() {
         const hasAiImprovementOccurred = ai.improved !== ai.corrected;
 
         if (hasAiImprovementOccurred) {
-          if (ai.provider === "gemini") {
-            improvementExplanationFr = "";
-            improvementExplanationDarija = ai.improvementExplanationDarija || defaultImprovementExplanationDarijaGemini;
-          } else {
-            improvementExplanationFr = ai.improvementExplanationFr || defaultImprovementExplanationFr;
-            improvementExplanationDarija = ai.improvementExplanationDarija || "";
-          }
+          improvementExplanationFr =
+            ai.improvementExplanationFr ||
+            (ai.provider !== "gemini" ? defaultImprovementExplanationFr : "");
+          improvementExplanationDarija =
+            ai.improvementExplanationDarija ||
+            (ai.provider === "gemini" ? defaultImprovementExplanationDarijaGemini : "");
 
           improvementNotes = [{
             ruleId: `ai-improvement-${ai.provider}`,
