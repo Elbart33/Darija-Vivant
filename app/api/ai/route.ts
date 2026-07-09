@@ -42,8 +42,11 @@ pour un francophone qui apprend l'arabe, niveau A2+/B1.
 Ta mission :
 1. Corriger la phrase (grammaire, conjugaison, genre).
 2. Améliorer la phrase pour qu'elle soit plus naturelle en darija parlée.
-3. Expliquer la correction et l'amélioration en français, de façon simple 
-et pédagogique.
+3. Pour chaque passe modifiée, fournir DEUX explications distinctes :
+   - Une explication principale en darija marocaine (écriture arabe), 
+courte et simple.
+   - Une explication en français, courte et simple, qui dit la même chose 
+que l'explication en darija.
 
 Règles importantes sur l'amélioration :
 - Vise un niveau de darija correcte et naturelle, ni trop soutenue ni trop 
@@ -51,32 +54,29 @@ familière.
 - Si la phrase corrigée est déjà naturelle, "improved" doit être identique 
 à "corrected".
 
-Règles sur l'explication en français :
-- Réponds uniquement en français, de façon claire et courte (une à deux 
-phrases maximum).
-- Si tu cites un mot ou une expression en arabe dans l'explication, 
+Règles sur les explications :
+- Chaque explication (darija et français) fait une à deux phrases maximum.
+- Si tu cites un mot ou une expression arabe dans l'explication française, 
 mets-le entre guillemets français comme ceci : «الكلمة».
 - Mets en gras le mot ou la règle essentielle à retenir avec des doubles 
-astérisques, par exemple **«كلمة»**.
-- S'il y a plusieurs erreurs dans la phrase, ne fais pas de liste 
-numérotée : relie les explications avec des mots simples comme "et aussi" 
-ou "de plus", pour que ça sonne naturel, pas scolaire.
-- La réponse doit être un JSON exactement dans ce format :
+astérisques.
+- S'il y a plusieurs erreurs, ne fais pas de liste numérotée : relie les 
+explications avec des mots simples ("et aussi", "de plus"), pour que ça 
+sonne naturel, pas scolaire.
+- Si tu n'as rien changé à une passe, laisse les deux explications 
+correspondantes vides ("").
+
+La réponse doit être un JSON exactement dans ce format :
 {
   "corrected": "الجملة المصححة",
   "correctionChanged": true,
-  "correctionExplanationDarija": "explication de la correction en 
-français",
+  "correctionExplanationDarija": "شرح بالدارجة",
+  "correctionExplanationFr": "explication en français",
   "improved": "الجملة المحسنة",
   "improvementChanged": true,
-  "improvementExplanationDarija": "explication de l'amélioration en 
-français"
+  "improvementExplanationDarija": "شرح بالدارجة",
+  "improvementExplanationFr": "explication en français"
 }
-
-Si tu n'as rien changé à la correction, mets correctionChanged=false et 
-laisse l'explication vide.
-Si tu n'as rien changé à l'amélioration, mets improvementChanged=false et 
-laisse l'explication vide.
 
 Ne réponds jamais avec du texte ou du markdown en dehors du JSON.`;
 
@@ -86,19 +86,21 @@ marocaine) pour un francophone qui apprend l'arabe, niveau A2+/B1.
 Ta mission :
 1. Corriger la phrase (grammaire, conjugaison, genre).
 2. Améliorer la phrase pour qu'elle soit plus naturelle en darija parlée.
-3. Expliquer la correction et l'amélioration en français, simplement.
+3. Pour chaque passe modifiée, fournir une explication en darija marocaine 
+(écriture arabe) ET une explication équivalente en français, chacune 
+courte et simple.
 
 Règles :
-- Une à deux phrases d'explication maximum, en français, simples et 
-claires.
-- Mets le mot ou la règle essentielle entre doubles astérisques, par 
-exemple **«كلمة»**.
-- Si tu n'as rien changé, laisse l'explication vide ("").
+- Une à deux phrases d'explication maximum, dans chaque langue.
+- Mets le mot ou la règle essentielle entre doubles astérisques.
+- Si tu n'as rien changé, laisse les explications vides ("").
 
 Réponds uniquement avec ce format JSON, sans texte ni markdown autour :
 {"corrected": "...", "correctionChanged": true, 
-"correctionExplanationDarija": "...", "improved": "...", 
-"improvementChanged": true, "improvementExplanationDarija": "..."}`;
+"correctionExplanationDarija": "...", "correctionExplanationFr": "...", 
+"improved": "...", "improvementChanged": true, 
+"improvementExplanationDarija": "...", "improvementExplanationFr": 
+"..."}`;
 
 function extractString(text: string, key: string): string {
   const re = new RegExp(`"${key}"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`, "s");
@@ -226,20 +228,13 @@ debugRaw: raw });
       return NextResponse.json({ ok: false, reason: "no_content" });
     }
 
-    let correctionExplanationFr = "";
-    let correctionExplanationDarija = "";
-    let improvementExplanationFr = "";
-    let improvementExplanationDarija = "";
-
-    if (usedProvider === "gemini" || usedProvider === "groq-darija") {
-      correctionExplanationDarija = parsed.correctionExplanationDarija || 
-"";
-      improvementExplanationDarija = parsed.improvementExplanationDarija 
+    const correctionExplanationFr = parsed.correctionExplanationFr || "";
+    const correctionExplanationDarija = parsed.correctionExplanationDarija 
 || "";
-    } else {
-      correctionExplanationFr = parsed.correctionExplanationFr || "";
-      improvementExplanationFr = parsed.improvementExplanationFr || "";
-    }
+    const improvementExplanationFr = parsed.improvementExplanationFr || 
+"";
+    const improvementExplanationDarija = 
+parsed.improvementExplanationDarija || "";
 
     return NextResponse.json({
       ok: true,
